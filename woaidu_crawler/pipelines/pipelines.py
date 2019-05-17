@@ -31,10 +31,10 @@ class WoaiduCrawlerPipeline(object):
             item['author'],
             item['book_description'],
             item['book_covor_image_url'],
-            #item['book_download'],
+            item['book_download'],
             item['original_url'],
     )
 
-        sql = 'INSERT INTO books (book_name, author, book_description, book_covor_image_url, original_url) VALUES(%s, %s, %s, %s, %s)'
+        sql = 'INSERT INTO books(book_name, author, book_description, book_covor_image_url, book_download, original_url) VALUES(%s, %s, %s, %s, %s, %s)'
         self.db_cur.execute(sql, values)
 

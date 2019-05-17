@@ -33,13 +33,13 @@ class WoaiduSpider(scrapy.Spider):
             download_item['source_site'] = x.xpath('.//a[1]/span/text()').extract_first()[3:-1]
 
             download.append(download_item) 
-        woaidu_item['book_download'] = download
+        woaidu_item['book_download'] = str(download)
         woaidu_item['original_url'] = response.url
         yield woaidu_item
 
     def parse(self, response):
     	self.i += 1
-    	if self.i <=2:
+    	if self.i <=1:
     		next_url = 'https://www.woaidu.org/sitemap_' + str(self.i) +'.html'
     		yield scrapy.Request(url=next_url, callback=self.parse)
 

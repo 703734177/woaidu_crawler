@@ -8,6 +8,7 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+#DOWNLOAD_DELAY = 0.5
 
 BOT_NAME = 'woaidu_crawler'
 
@@ -31,6 +32,11 @@ MYSQL_PASSWORD = '12345678'
 ITEM_PIPELINES = {
     'woaidu_crawler.pipelines.pipelines.WoaiduCrawlerPipeline': 401,
 }
+
+HTTPPROXY_PROXY_LIST_FILE = r'D:\work\woaidu_crawler\woaidu_crawler\middlewares\proxy_list.json'
+DOWNLOADER_MIDDLEWARES = {
+	'woaidu_crawler.middlewares.middlewares.RandomHttpProxyMiddleware':745,
+	}
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
